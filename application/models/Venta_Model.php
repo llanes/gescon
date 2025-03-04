@@ -564,7 +564,10 @@ public function item_orden($where = NULL) {
         $timbradoAsociada = isset($cartdata['timbradoA']) ? $cartdata['timbradoA'] : null;
         $operacion = isset($cxartdata['operacion']) ? $cartdata['operacion'] : null;
         $concepto = isset($cxartdata['concepto']) ? $cxartdata['concepto'] : 'Venta';	
-	
+        $idDevoluciones = isset($cartCoompra['idDevoluciones']) ? $cartCoompra['idDevoluciones'] : null;
+
+        
+        
         
          $this->db->trans_begin();
          $session_data = $this->session->userdata();
@@ -613,6 +616,12 @@ public function item_orden($where = NULL) {
                 $this->db->insert('Factura_Venta', $object);
                 $id = $this->db->insert_id(); // Obtener el ID de la factura insertada
 
+
+                if ($idDevoluciones) {
+                    $this->db->set('Factura_Venta_idFactura_Venta', $id);
+                    $this->db->where('idDevoluciones', $idDevoluciones);
+                    $this->db->update('Devoluciones');
+                }
                 if ($tipoComprovante == 1) {
                 
                 // Insertar en SET_Comprobantes

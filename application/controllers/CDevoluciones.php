@@ -484,17 +484,22 @@ private function get_estado_nombre($estado_id)
 			}
 
 			// Eliminar registros relacionados de manera segura
+			$this->db->set('Estado', '4');
+			$this->db->where('idFactura_Venta', $devolucion->Factura_Venta_idFactura_Venta);
+			$this->db->update('Factura_Venta');
+
+
+			$this->db->delete('Devoluciones', ['idDevoluciones' => $idDevoluciones]);
+
 			$this->db->delete('Detalle_Devolucion', ['Devoluciones_idDevoluciones' => $idDevoluciones]);
 			$this->db->delete('Acientos', ['Compra_idDevoluciones' => $idDevoluciones]);
 			$this->db->delete('Caja_Cobros', ['Devoluciones_idDevoluciones' => $idDevoluciones]);
-			$this->db->delete('Cuenta_Fabor', ['Devoluciones_idDevoluciones' => $idDevoluciones]);
 			$this->db->delete('Movimientos', ['Devoluciones_idDevoluciones' => $idDevoluciones]);
 			$this->db->delete('Tarjeta', ['Devoluciones_idDevoluciones' => $idDevoluciones]);
 			$this->db->delete('Cuenta_Corriente_Cliente', ['Devolucion_idDevoluciones' => $idDevoluciones]);
 
-			// Eliminar la devolución
-			$this->db->delete('Devoluciones', ['idDevoluciones' => $idDevoluciones]);
 
+			
 			// Confirmar transacción
 			if ($this->db->trans_status() === FALSE) {
 				$this->db->trans_rollback();
