@@ -1,0 +1,10 @@
+{
+	"require":{
+		"slam/php-excel":"*",
+		"twilio/sdk": "^5.0"
+		
+	},
+	"require-dev":{
+		"fzaninotto/faker": "^1.8"
+	}
+}

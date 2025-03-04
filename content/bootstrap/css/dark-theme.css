@@ -1,0 +1,69 @@
+/* Common theme */
+html,
+body,
+:not([style*="background-color:"]):not(iframe) {
+    background-color: rgb(3, 6, 8) !important;
+}
+html,
+body,
+:not([style*="color:"]),
+.sr-reader *:not([class*='sr-pivot']) {
+    color: rgb(255, 255, 250) !important;
+}
+
+h1:not([style*="color:"]),
+h2:not([style*="color:"]),
+h3:not([style*="color:"]),
+h4:not([style*="color:"]),
+h5:not([style*="color:"]),
+h6:not([style*="color:"]) {
+    color: rgb(173, 96, 66) !important;
+}
+cite:not([style*="color:"]) {
+    color: rgb(86, 142, 100) !important;
+}
+input:not([style*="background-color:"]),
+textarea:not([style*="background-color:"]),
+button:not([style*="background-color:"]),
+[role="button"] {
+    background-color: rgb(15, 27, 38) !important;
+}
+input:not([style*="background-color:"]):hover,
+textarea:not([style*="background-color:"]):hover,
+button:not([style*="background-color:"]):hover,
+[role="button"]:hover {
+    background-color: rgb(14, 35, 54) !important;
+}
+input:not([style*="background-color:"]):active, input:not([style*="background-color:"]):focus,
+textarea:not([style*="background-color:"]):active, textarea:not([style*="background-color:"]):focus,
+button:not([style*="background-color:"]):active, button:not([style*="background-color:"]):focus,
+[role="button"]:active, [role="button"]:focus {
+    background-color: rgb(14, 37, 60) !important;
+}
+a:not([style*="color:"]) {
+    color: rgb(86, 125, 142) !important;
+}
+a:not([style*="color:"]):hover {
+    color: rgb(110, 150, 170) !important;
+}
+a:not([style*="color:"]):active, a:not([style*="color:"]):focus {
+    color: rgb(134, 175, 199) !important;
+}
+:not([style*="border-color:"]),
+::before,
+::after {
+    border-color: rgb(255, 255, 255) !important;
+}
+div:empty,
+.sr-reader *,
+.sr-backdrop {
+    background-color: rgba(3, 6, 8, 0.5) !important;
+}
+input::placeholder,
+textarea::placeholder {
+    color: rgba(114, 108, 94, 0.5) !important;
+}
+input:not([style*="background-image:"]),
+textarea:not([style*="background-image:"]) {
+    background-image: none !important;
+}
