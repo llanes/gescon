@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo ============================================
 echo    Subir Cambios al Repositorio Git
 echo ============================================
@@ -20,5 +21,4 @@ if /i "%respuesta%"=="S" (
     echo No se subieron los cambios.
 )
 echo.
-echo Presiona cualquier tecla para cerrar...
-pause > nul 
+pause 
