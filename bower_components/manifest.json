@@ -1,0 +1,29 @@
+{
+  "name": "Gescon",
+  "short_name": "Gescon",
+  "description": "Una aplicación para la gestión Gescon.",
+  "start_url": "/gescon/",
+  "scope": "/gescon/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/gescon/assets/OIG3pos_1.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/gescon/assets/OIG3192.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/gescon/assets/OIG3512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]   
+}
+
+

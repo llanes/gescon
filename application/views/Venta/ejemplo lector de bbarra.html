@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo de Captura de Ticket</title>
+</head>
+<body>
+    <div>
+        <label for="inputTicket">Ingrese el Ticket de la Balanza:</label>
+        <input type="text" id="inputTicket" placeholder="Ejemplo: 123456 - Producto ABC - 2.5 kg - Precio: $10.00">
+        <button id="procesarTicket">Procesar Ticket</button>
+    </div>
+    <div>
+        <h2>Resultados:</h2>
+        <p><strong>Código de Barras:</strong> <span id="codigoBarras"></span></p>
+        <p><strong>Descripción del Producto:</strong> <span id="descripcionProducto"></span></p>
+        <p><strong>Peso:</strong> <span id="peso"></span> kg</p>
+        <p><strong>Precio:</strong> $<span id="precio"></span></p>
+    </div>
+
+    <script>
+        document.getElementById('procesarTicket').addEventListener('click', function() {
+            const inputTicket = document.getElementById('inputTicket').value;
+
+            const match = inputTicket.match(/(\d+) - ([\w\s]+) - ([\d.]+) kg - Precio: \$(\d+\.\d+)/);
+
+            if (match) {
+                const codigoBarras = match[1];
+                const descripcion = match[2];
+                const peso = parseFloat(match[3]);
+                const precio = parseFloat(match[4]);
+
+                document.getElementById('codigoBarras').textContent = codigoBarras;
+                document.getElementById('descripcionProducto').textContent = descripcion;
+                document.getElementById('peso').textContent = peso;
+                document.getElementById('precio').textContent = precio;
+            } else {
+                alert("El formato del ticket no es válido.");
+            }
+        });
+    </script>
+</body>
+</html>
