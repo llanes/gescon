@@ -125,11 +125,13 @@ public function ajax_list()
 			</a>
 			<a class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" href="Reporte_exel/devolucion/'.$Devolver->idDevoluciones.'" title="Exportar a Excel">
 				<i class="fa fa-file-excel-o" aria-hidden="true"></i>
-			</a>
-			<a class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" href="javascript:void(0);" title="Editar Devolución" onclick="editar_devolucion('."'".$Devolver->idDevoluciones."'".')">
+			</a>' .
+			// Solo mostrar botón de edición si el estado no es anulado (2)
+			($Devolver->Estado != 2 ? 
+			'<a class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" href="javascript:void(0);" title="Editar Devolución" onclick="editar_devolucion('."'".$Devolver->idDevoluciones."'".')">
 				<i class="fa fa-pencil" aria-hidden="true"></i>
-			</a>
-		  </div>';
+			</a>' : '') .
+		  '</div>';
 			$row[] = $Devolver->idDevoluciones;
 			$data[] = $row;
 		}
@@ -138,6 +140,7 @@ public function ajax_list()
 			"draw"            => $_POST['draw'],
 			"recordsTotal"    => $this->Devolver->count_todas(),
 			"recordsFiltered" => $this->Devolver->count_filtro(),
+			
 			"data"            => $data,
 		);
 		echo json_encode($output);
