@@ -7,7 +7,7 @@ class Cdevolver_Model extends CI_Model {
         const SELECT ='
         idDevoluciones,
         de.Estado,mm.Nombre as MotivoNombre,
-        
+        Estado_Proceso,
         Venta_Compra,
         Factura_Compra_idFactura_Compra as id,
         Num_factura_Compra,Ticket,

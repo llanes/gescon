@@ -109,14 +109,14 @@ public function ajax_list()
 
 			// Estilos para los estados
 			$estado_class = '';
-			if ($Devolver->Estado == 1) {
+			if ($Devolver->Estado_Proceso == 1) {
 				$estado_class = 'label label-success'; // Procesado
-			} elseif ($Devolver->Estado == 2) {
+			} elseif ($Devolver->Estado_Proceso == 0) {
 				$estado_class = 'label label-danger'; // Anulado
 			} else {
 				$estado_class = 'label label-warning'; // Pendiente
 			}
-			$row[] = '<span class="' . $estado_class . '">' . ($Devolver->Estado == 1 ? 'Procesado' : ($Devolver->Estado == 2 ? 'Anulado' : 'Pendiente')) . '</span>';
+			$row[] = '<span class="' . $estado_class . '">' . ($Devolver->Estado_Proceso == 1 ? 'Procesado' : ($Devolver->Estado_Proceso == 2 ? 'Anulado' : 'Pendiente')) . '</span>';
 
 			// Opciones de exportación (PDF y Excel) + Botón de edición
 			$row[] = '<div class="pull-right hidden-phone">
@@ -490,9 +490,12 @@ private function get_estado_nombre($estado_id)
 			$this->db->set('Estado', '4');
 			$this->db->where('idFactura_Venta', $devolucion->Factura_Venta_idFactura_Venta);
 			$this->db->update('Factura_Venta');
+			$this->db->set('Estado_Proceso', 2);
+			$this->db->where('idDevoluciones', $idDevoluciones);
+			$this->db->update('Devoluciones');
 
 
-			$this->db->delete('Devoluciones', ['idDevoluciones' => $idDevoluciones]);
+			// $this->db->delete('Devoluciones', ['idDevoluciones' => $idDevoluciones]);
 
 			$this->db->delete('Detalle_Devolucion', ['Devoluciones_idDevoluciones' => $idDevoluciones]);
 			$this->db->delete('Acientos', ['Compra_idDevoluciones' => $idDevoluciones]);
